@@ -1,0 +1,50 @@
+﻿@model medical.Model.Models.Hospitalisation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hospitalisation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavillon.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pavillon.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPATIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPATIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NBRJOUR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NBRJOUR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIXUNITAIRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRIXUNITAIRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDHOSPI }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

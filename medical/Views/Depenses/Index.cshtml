@@ -1,0 +1,96 @@
+﻿@model IEnumerable<medical.Model.Models.Depense>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Page Heading -->
+    <div class="card-header py-3">
+        <a href="#" onclick="CreateDepenses()" data-toggle="modal" data-target="#createDepenses" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+       
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>
+    </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Dépense</h6>
+        <br />
+        @using (Html.BeginForm("ExportData", "Depenses", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" type="submit"> <i class="fas fa-file-excel fa-sm text-white-50"></i> Exporter Excel</button>
+        }
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateEdition)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Destinateur)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Motif)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Montant)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateDay)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateWeek)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateYear)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateEdition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Destinateur)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Motif)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Montant)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateDay)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateWeek)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateYear)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.DepenseID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.DepenseID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.DepenseID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

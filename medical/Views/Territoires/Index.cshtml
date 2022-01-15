@@ -1,0 +1,61 @@
+﻿@model IEnumerable<medical.Model.Models.Territoire>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Territoires</h6>
+        <br />
+        <a href="#" onclick="CreateActeMedicals()" data-toggle="modal" data-target="#ActeInfiemier" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+            <i class="fas fa-file-excel fa-sm text-white-50"></i> Exporter Excel
+        </a>
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Province.DESIGNATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DESIGNATION)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Province.DESIGNATION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESIGNATION)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IDTERRITOIRE }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.IDTERRITOIRE }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IDTERRITOIRE })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

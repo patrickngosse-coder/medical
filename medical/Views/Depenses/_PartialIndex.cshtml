@@ -1,0 +1,6 @@
+﻿@model IEnumerable<medical.Model.Models.Depense>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Sum(i => i.Montant)<text>FC</text></div>

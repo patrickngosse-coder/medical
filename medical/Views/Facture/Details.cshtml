@@ -1,0 +1,123 @@
+﻿@model medical.Model.Models.Facturation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutFacture.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Facturation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Demandeur.NOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Demandeur.NOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Examen.CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Examen.CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medecin.NOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medecin.NOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REFERENCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REFERENCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATEFACTURE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATEFACTURE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateJour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateJour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSemaine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSemaine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAnne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAnne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMPATIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMPATIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEXE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JOUR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JOUR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDFACTURATION }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Depense";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h3 class="h3 mb-0 text-gray-800">Dépenses effectuées</h3>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Générer Rapport
+    </a>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Journalière</h6>
+            </div>
+            <div class="card-body">
+                @{ Html.RenderAction("CumuleJournalier", "Depenses");}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Hebdomadaire</h6>
+            </div>
+            <div class="card-body">
+                @{ Html.RenderAction("CumuleHebdo", "Depenses");}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

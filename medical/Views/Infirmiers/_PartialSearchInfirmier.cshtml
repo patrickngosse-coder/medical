@@ -1,0 +1,18 @@
+﻿@model IEnumerable<medical.Model.Models.Infirmier>
+
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-info">Aucun Infirmier trouvé</div>
+}
+<div style="max-height:300px;overflow-y:auto;" id="grouplistcontainer">
+    @foreach (var item in Model)
+    {
+    <div>
+        <div>@Html.ActionLink(item.NomComplet, "Index", "Infirmiers", new { id = item.IDPERSONNEL }, null)</div>
+        <div><small>Service:  @item.Service.DESIGNATION.ToString() </small></div>
+        <div><small>Grade:  @item.GRADE.ToString() </small></div>
+    </div>
+        <hr style="margin:23px 0px 0px 0px;" />
+    }
+</div>

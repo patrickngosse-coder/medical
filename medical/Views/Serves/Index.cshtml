@@ -1,0 +1,69 @@
+﻿@model IEnumerable<medical.Model.Models.Serve>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Page Heading -->
+    <div class="card-header py-3">
+       
+        <a href="#" onclick="CreateServes()" data-toggle="modal" data-target="#createServes" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+
+    </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Services</h6>
+        <br />
+        @Html.ActionLink("Excel ", "Reports", new { ReportType = "Excel" })|
+        @Html.ActionLink(" Word ", "Reports", new { ReportType = "Word" })|
+        @Html.ActionLink(" PDF ", "Reports", new { ReportType = "PDF" })|
+        @Html.ActionLink(" Image", "Reports", new { ReportType = "Image" })
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DESIGNATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.POUCENTAGEDEMAND)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.POUCENTAGEXAMEN)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESIGNATION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.POUCENTAGEDEMAND)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.POUCENTAGEXAMEN)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IDSERVICE }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.IDSERVICE }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IDSERVICE })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

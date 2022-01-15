@@ -1,0 +1,140 @@
+﻿@model IEnumerable<medical.Model.Models.Facturation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Page Heading -->
+    <div class="card-header py-3 ">
+        <a href="" onclick="CreateFacturations()" data-toggle="modal" data-target="#createFacturations"  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+      
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>
+    </div>
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+        <!-- Approach -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Opération(s) de @DateTime.Today</h6>
+            </div>
+            <div class="card-body">
+                @{ Html.RenderAction("EtatCourant", "Facturations"); }
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+        <!-- Illustrations -->
+        @*<div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Graphique</h6>
+            </div>
+            <div class="card-body">
+                <img src="@Url.Action("Graphique", "Facturations")" />
+            </div>
+        </div>*@
+
+
+
+    </div>
+</div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Toutes les Facturations</h6>
+        <div class="row">
+            @Html.ActionLink("Excel ", "Reports", new { ReportType = "Excel" })|
+            @Html.ActionLink(" Word ", "Reports", new { ReportType = "Word" })|
+            @Html.ActionLink(" PDF ", "Reports", new { ReportType = "PDF" })|
+            @Html.ActionLink(" Image", "Reports", new { ReportType = "Image" })
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Examen.CODE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.REFERENCE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DATEFACTURE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NOMPATIENT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AGE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            <text>Médecin Démandeur</text>
+                        </th>
+                        <th>
+                            <text>Cout</text>
+                        </th>
+                      
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Examen.CODE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.REFERENCE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATEFACTURE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOMPATIENT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AGE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Medecin.NomComplet)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Demandeur.NomComplet)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Examen.Cout)
+                        </td>
+                       
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IDFACTURATION }) |
+                            <a href="#" onclick="ApercuFacture()" data-toggle="modal" id = item.IDFACTURATION data-target="#detailModel" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Apercu</a>|
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IDFACTURATION })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

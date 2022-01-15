@@ -1,0 +1,8 @@
+﻿@model IEnumerable<medical.Model.Models.Facturation>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Select(i=>i.NOMPATIENT).Distinct().Count()</div>
+
+

@@ -1,0 +1,75 @@
+﻿@model medical.Model.Models.Depense
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Depense</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEdition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEdition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destinateur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destinateur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Montant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Montant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateWeek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DepenseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

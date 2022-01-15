@@ -1,0 +1,46 @@
+﻿@model IEnumerable<medical.Model.ViewModel.MyHonoraire>
+
+@{
+    ViewBag.Title = "ListMyHonoraires";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow ">
+    <div class="card-header">
+        <h4 class="m-0 font-weight-bold text-success"> Honoraires Hebdomadaires</h4>'
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            Jours
+                        </th>
+                        <th>
+                            Montant du Jour
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>#</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JourS)
+                            </td>
+                            <td>
+                                <strong>@Html.DisplayFor(modelItem => item.PaiementSomme)</strong>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

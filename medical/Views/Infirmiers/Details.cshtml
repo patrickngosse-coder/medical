@@ -1,0 +1,202 @@
+﻿@model medical.Model.Models.Infirmier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Infirmier</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordHash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwoFactorEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LockoutEndDateUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LockoutEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LockoutEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessFailedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessFailedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POSTNOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POSTNOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRENOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRENOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEXE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LIEUNAISSANCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIEUNAISSANCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATENAISSANCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATENAISSANCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ETATCIVIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ETATCIVIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATRICULE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATRICULE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GRADE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GRADE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADRESSSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADRESSSE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Service.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDCEENTRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCEENTRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

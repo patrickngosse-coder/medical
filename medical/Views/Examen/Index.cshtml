@@ -1,0 +1,84 @@
+﻿@model IEnumerable<medical.Model.Models.Examen>
+@{
+    ViewBag.Title = "Liste Examen";
+}
+
+<!-- Page Heading -->
+@{ Html.RenderAction("Index2", "Serves"); }
+<div class="card-header py-3">
+
+    <a href="#" onclick="CreateExamen()" data-toggle="modal" data-target="#createExamens" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+    </a>
+
+</div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste des Examens</h6>
+        <br />
+        @Html.ActionLink("Excel ", "Reports", new { ReportType = "Excel" })|
+        @Html.ActionLink(" Word ", "Reports", new { ReportType = "Word" })|
+        @Html.ActionLink(" PDF ", "Reports", new { ReportType = "PDF" })|
+        @Html.ActionLink(" Image", "Reports", new { ReportType = "Image" })
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Service
+                        </th>
+                        <th>
+                            Code
+                        </th>
+                        <th>
+                            Désignation
+                        </th>
+                        <th>
+                            Prix Unitaire
+                        </th>
+
+                        <th>
+                            Matière
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Service.DESIGNATION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CODE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DESIGNATION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRIXUNITAIRE)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MATIERE)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IDEXAMEN }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IDEXAMEN }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IDEXAMEN })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

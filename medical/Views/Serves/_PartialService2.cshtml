@@ -1,0 +1,42 @@
+﻿@model IEnumerable<medical.Model.Models.Serve>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@if (Model.Count() < 5)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                        @Html.DisplayFor(modelItem => item.DESIGNATION)
+                        <div class="text-white-50 small">Disponible</div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card bg-success text-white shadow">
+                    <div class="card-body">
+                        @Html.DisplayFor(modelItem => item.DESIGNATION)
+                        <div class="text-white-50 small">Disponible</div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+}

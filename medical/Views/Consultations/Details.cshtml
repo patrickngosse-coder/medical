@@ -1,0 +1,90 @@
+﻿@model medical.Model.Models.Consultation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Consultation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DATECONSULTATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATECONSULTATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DECISION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DECISION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PLAINTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLAINTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIAGNOSTIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIAGNOSTIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEMPERATURE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEMPERATURE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRESSIONARTERIEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRESSIONARTERIEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POIDS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POIDS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATIENTID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATIENTID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPERSONNEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPERSONNEL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCONSULTATION }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

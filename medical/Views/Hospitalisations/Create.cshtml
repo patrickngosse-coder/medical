@@ -1,0 +1,49 @@
+﻿@model medical.Model.Models.Hospitalisation
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            <text class="control-label col-md-2">Pavillon</text>
+            <div class="col-md-10">
+                @Html.DropDownList("IDPAVILLON", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDPAVILLON, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <text class="control-label col-md-2">Patient</text>
+            <div class="col-md-10">
+                @Html.DropDownList("IDPATIENT", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDPATIENT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <text class="control-label col-md-2">Jours</text>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NBRJOUR, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NBRJOUR, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <text class="control-label col-md-2">Prix Unitaire</text>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PRIXUNITAIRE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PRIXUNITAIRE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+            <input class="btn btn-primary" type="submit" value="Enregistrer" />
+        </div>
+    </div>
+}
+

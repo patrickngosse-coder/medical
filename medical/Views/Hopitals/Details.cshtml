@@ -1,0 +1,58 @@
+﻿@model medical.Model.Models.Hopital
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hopital</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COORDONNE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COORDONNE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatutHopital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatutHopital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTEJURIDIQUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTEJURIDIQUE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDHOPITAL }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

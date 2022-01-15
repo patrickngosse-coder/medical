@@ -1,0 +1,112 @@
+﻿@model medical.Model.ViewModel.IndexPatient
+
+@{
+    ViewBag.Title = "MyEtudians";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="card shadow mb-12">
+       <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste Patient</h6>
+       </div>
+            <div class="card-body">
+
+                        <hr />
+                        <table class="table table-bordered ">
+                            <tr>
+                                <th>
+                                    Les examens effectués
+                                </th>
+                                <th>
+                                    Photo
+                                </th>
+                                <th>
+                                    Détails Patients
+                                </th>
+
+                            </tr>
+
+                            @foreach (var item in Model.Facturations)
+                            {
+                                 string selectedRow = "";
+                                    if (item.IDFACTURATION == ViewBag.IDFACTURATION)
+                                    {
+                                        selectedRow = "bg-gray-200";
+                                    }
+                                <tr class="@selectedRow" valign="top">
+                                    <td>
+                                        @Html.ActionLink("Voir", "MyPatients", new { id = item.IDFACTURATION, @class = "btn btn-primary" })
+                                    </td>
+                                    <td style="text-align:right">
+                                        <img src="~/Content/facebook-avatar.png" height="100" width="100" />
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(item.NOMPATIENT/*.LimitLength(30)*/, "Index", new { id = item.IDFACTURATION }, new { @title = item.NOMPATIENT })
+                                        <br />
+                                        <text>Sexe :</text> @Html.DisplayFor(modelItem => item.SEXE)
+                                        <br />
+                                        <text>Age :</text>@Html.DisplayFor(modelItem => item.AGE)<text> ans</text>
+                                        <br />
+                                        <text>Catégorie :</text>@Html.DisplayFor(modelItem => item.CATEGORIE)
+
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                </div>
+              
+            <div class="card shadow mb-12">
+
+                @if (Model.Examens != null)
+                {
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Il y a @Model.Examens.Count() examen(s)</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Service
+                                    </th>
+                                    <th>
+                                        Code
+                                    </th>
+                                    <th>
+                                        Désignation
+                                    </th>
+                                    <th>
+                                        Cout
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.Examens)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Service.DESIGNATION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CODE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DESIGNATION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Cout)
+                                        </td>
+
+                                       
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                }
+            </div>
+    </div>

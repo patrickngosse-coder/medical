@@ -1,0 +1,48 @@
+﻿@model IEnumerable<medical.Model.Models.Examen>
+
+@{
+    ViewBag.Title = "ListMyExamens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="card shadow ">
+        <div class="card-header">
+            <h6 class="m-0 font-weight-bold text-success"> Liste Examens</h6>'
+          
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CODE)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DESIGNATION)
+                            </th>
+                           
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CODE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DESIGNATION)
+                                </td>
+                               
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.IDEXAMEN }) 
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

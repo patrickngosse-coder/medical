@@ -1,0 +1,464 @@
+﻿@model IEnumerable<medical.Model.Models.Patient>
+@{
+    ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/_LayoutFacture.cshtml";
+}
+
+<br /><br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <h5 class="panel-title pull-left" style="margin-left:50px;">
+                <strong>Détails Facturation</strong>
+            </h5>
+            <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">Nouvelle Facture</button>
+        </div>
+    </div>
+
+    @*Receive All Database Data From Controller And Display Those Data In Client Side*@
+
+    @if (Model.Count() != 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    Date :
+                    <strong> @item.DateEnregistrement</strong>
+                    @*<span class="float-right"> <strong>Status:</strong> Pending</span>*@
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-5">
+
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">Details Patient:</h6>
+                                <div>
+                                    <strong>Noms Patient : @item.NomComplet </strong>
+                                </div>
+                                <div>
+                                    <strong>Sexe Patient : @item.SEXE </strong>
+                                </div>
+
+                                <div>Adresse: <span style="text-decoration: underline;">@item.ADRESSSE</span> </div>
+                                <div>@Html.ActionLink(" ", "Edit", new { id = @item.IDPATIENT }, new { @class = "btn btn-warning  btn-sm glyphicon glyphicon-edit" })</div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table table-striped table-responsive">
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="table-responsive-sm">
+                                            <table class="table table-striped css-serial">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Service</th>
+                                                        <th>Examen</th>
+                                                        <th>Prix</th>
+                                                        <th>Total</th>
+                                                        <th></th>
+
+                                                    </tr>
+                                                </thead>
+                                                @{
+                                                    var totalBill = 0;
+                                                }
+                                                @foreach (var facture in item.Facturations)
+                                                {
+                                                    <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>@facture.Examen.Service.DESIGNATION</td>
+                                                            <td>@facture.Examen.DESIGNATION</td>
+                                                            <td>@facture.Examen.PRIXUNITAIRE</td>
+                                                         
+                                                            <td>@Html.ActionLink(" ", "Edit", new { id = facture.IDFACTURATION }, new { @class = "btn btn-warning pull-right  btn-sm glyphicon glyphicon-edit" })</td>
+                                                        </tr>
+
+                                                    </tbody>
+
+                                                    totalBill = totalBill + @Convert.ToInt32(facture.Examen.PRIXUNITAIRE);
+
+
+                                                }
+
+                                            </table>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-5">
+
+                                                </div>
+                                                <div class="col-lg-4 col-sm-5 ml-auto">
+                                                    <table class="table table-clear">
+                                                        <tbody>
+                                                            <tr>
+
+                                                                <td class="left">
+                                                                    <strong>Total à Payer:</strong>
+                                                                </td>
+                                                                <td class="right">
+                                                                    <strong>$@totalBill</strong>
+                                                                </td>
+                                                                @*<td class="left">
+                                                                    <span class="pull-right" style="margin-right:200px;"><strong>Total Bill :  </strong> @totalBill</span>
+                                                                    </td>*@
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="panel-body">
+            <h6 style="color:red;">La Base de donnée est vide!</h6>
+        </div>
+
+    }
+
+</div>
+
+
+
+
+<div class="modal fade" id="newOrderModal">
+    <div class="modal-dialog modal-lg" style="width:900px !important;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<a href="#" class="close" data-dismiss="modal">&times;</a>*@
+                <h5 class="modal-title">Nouvelle Facture</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <form id="NewOrderForm">
+
+                        @*Customer Details*@
+                        <h5 style="color:#ff6347">Détail Patient</h5>
+                        <hr />
+                        <table class=" table-responsive">
+                            <tr>
+                                <td>
+                                    <div class="form-group row">
+                                        <text class="control-label col-md-4">Nom:</text>
+                                        <div class="col-md-8">
+                                            <input type="hidden" id="CustomerId" style="width:100%" />
+
+                                            <input type="text" id="nom" name="nom" placeholder="Saisir le Nom du patient..." class="form-control" style="width:100%" />
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <text class="control-label col-md-4">Postnom:</text>
+                                        <div class="col-md-8">
+                                            <input type="text" id="postnom" name="postnom" placeholder="Saisir le Postnom du Patient..." class="form-control" style="width:100%" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <text class="control-label col-md-4">Prénom:</text>
+                                        <div class="col-md-8">
+                                            <input type="text" id="prenom" name="prenom" placeholder="Saisir le Prénom du Patient..." class="form-control" style="width:100%" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="50px"></td>
+                                <td>
+
+                                    <div class="form-group row">
+                                        <text class="control-label col-md-4">Sexe:</text>
+                                        <div class="col-md-8">
+                                            <input id="sexe" name="sexe" type="text" placeholder="Indiquer le Sexe du patient..." class="form-control" style="width:100%" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <text class="control-label col-md-4">Adresse:</text>
+                                        <div class="col-md-8">
+                                            <input type="text" id="adresse" name="adresse" placeholder="Adresse..." class="form-control" style="width:100%" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <text class="control-label col-md-4">Téléphone:</text>
+                                        <div class="col-md-8">
+                                            <input type="text" id="telephone" name="telephone" placeholder="Téléphone..." class="form-control" style="width:100%" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        @*Order Details*@
+                        <h5 style="margin-top:10px;color:#ff6347">Détails Facture</h5>
+                        <hr />
+                        <div class="form-horizontal">
+
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="form-group row">
+                                            <text class="control-label col-md-4">Service:</text>
+                                            <div class="col-md-8">
+                                                <input type="hidden" id="OrderId" />
+                                                <input type="text" id="service" name="service" placeholder="Service" class="form-control" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <text class="control-label col-md-4">Examen:</text>
+                                            <div class="col-md-8">
+                                                <input type="text" id="examen" name="examen" placeholder="Nom d'Examen..." class="form-control" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <text class="control-label col-md-4">Cout:</text>
+                                            <div class="col-md-8">
+                                                <input type="number" id="prix" name="prix" placeholder="Tarif Unitaire..." class="form-control" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td width="50px"></td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <text class="control-label col-md-4">Médecin Examinateur:</text>
+                                            <div class="col-md-8">
+                                                <input type="text" id="examinateur" name="examinateur" placeholder="Examinateur" class="form-control" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <text class="control-label col-md-4">Médecin Demandeur:</text>
+                                            <div class="col-md-8">
+                                                <input type="text" id="demandeur" name="demandeur" placeholder="Demandeur..." class="form-control" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <a id="addToList" class="btn btn-primary">Ajouter dans la liste</a>
+
+                            <table id="detailsTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:20%">Service</th>
+                                        <th style="width:20%">Examen</th>
+                                        <th style="width:10%">Prix Unitaire</th>
+                                        <th style="width:20%">Demandeur</th>
+                                        <th style="width:20%">Examinateur</th>
+                                        <th style="width:10%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button id="saveOrder" type="submit" class="btn btn-danger">Enregistrer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+//Show Modal.
+                            function addNewOrder() {
+                                $("#newOrderModal").modal();
+                            }
+                            //Add Multiple Order.
+                            $("#addToList").click(function (e) {
+                                e.preventDefault();
+
+                                if ($.trim($("#demandeur").val()) == "" || $.trim($("#service").val()) == "" || $.trim($("#examen").val()) == "" || $.trim($("#prix").val()) == "" || $.trim($("#examinateur").val()) == "") return;
+
+                                var service = $("#service").val(),
+                                    examen = $("#examen").val(),
+                                    prix = $("#prix").val(),
+                                    examinateur = $("#examinateur").val(),
+                                    demandeur = $("#demandeur").val(),
+                                    detailsTableBody = $("#detailsTable tbody");
+
+                                var productItem = '<tr><td>' + service + '</td><td>' + examen + '</td><td>' + prix + '</td><td>' + demandeur + '</td><td>' + examinateur + '</td><td><a data-itemId="0" href="#" class="btn deleteItem">Supprimer</a></td></tr>';
+                                detailsTableBody.append(productItem);
+                                clearItem();
+                            });
+                            //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+                            function clearItem() {
+                                $("#service").val('');
+                                $("#examen").val('');
+                                $("#prix").val('');
+                                $("#examinateur").val('');
+                                $("#demandeur").val('');
+                            }
+                            // After Add A New Order In The List, If You Want, You Can Remove It.
+                            $(document).on('click', 'a.deleteItem', function (e) {
+                                e.preventDefault();
+                                var $self = $(this);
+                                if ($(this).attr('data-itemId') == "0") {
+                                    $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                                        $(this).remove();
+                                    });
+                                }
+                            });
+
+                            //After Click Save Button Pass All Data View To Controller For Save Database
+                            function saveOrder(data) {
+                                return $.ajax({
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    type: 'POST',
+                                    url: "../Facture/SaveFacture",
+                                    data: data,
+                                    success: function (result) {
+                                        alert(result);
+                                        location.reload();
+                                    },
+                                    error: function () {
+                                        alert("Erreur au niveau du Script!")
+                                    }
+                                });
+                            }
+                            //Collect Multiple Order List For Pass To Controller
+                            $("#saveOrder").click(function (e) {
+                                e.preventDefault();
+
+                                var orderArr = [];
+                                orderArr.length = 0;
+
+                                $.each($("#detailsTable tbody tr"), function () {
+                                    orderArr.push({
+                                        service: $(this).find('td:eq(0)').html(),
+                                        examen: $(this).find('td:eq(1)').html(),
+                                        prix: $(this).find('td:eq(2)').html(),
+                                        examinateur: $(this).find('td:eq(3)').html(),
+                                        demandeur: $(this).find('td:eq(4)').html()
+                                    });
+                                });
+
+                                var data = JSON.stringify({
+                                    nom: $("#nom").val(),
+                                    postnom: $("#postnom").val(),
+                                    prenom: $("#prenom").val(),
+                                    sexe: $("#sexe").val(),
+                                    adresse: $("#adresse").val(),
+                                    telephone: $("#telephone").val(),
+                                    order: orderArr
+                                });
+
+                                $.when(saveOrder(data)).then(function (response) {
+                                    console.log(response);
+                                }).fail(function (err) {
+                                    console.log(err);
+                                });
+                            });</script>
+}
+<style>
+
+    .css-serial {
+        counter-reset: serial-number; /* Set the serial number counter to 0 */
+    }
+
+        .css-serial td:first-child:before {
+            counter-increment: serial-number; /* Increment the serial number counter */
+            content: counter(serial-number); /* Display the counter */
+        }
+
+    .card {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+    }
+
+        .card > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        .card > .list-group:first-child .list-group-item:first-child {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+
+        .card > .list-group:last-child .list-group-item:last-child {
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+    .card-body {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    .card-title {
+        margin-bottom: 0.75rem;
+    }
+
+    .card-subtitle {
+        margin-top: -0.375rem;
+        margin-bottom: 0;
+    }
+
+    .card-text:last-child {
+        margin-bottom: 0;
+    }
+
+    .card-link:hover {
+        text-decoration: none;
+    }
+
+    .card-link + .card-link {
+        margin-left: 1.25rem;
+    }
+
+    .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+        .card-header:first-child {
+            border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+        }
+
+        .card-header + .list-group .list-group-item:first-child {
+            border-top: 0;
+        }
+</style>

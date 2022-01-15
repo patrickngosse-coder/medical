@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MedicalApp - @ViewBag.Title </title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        @Html.Partial("_Sidebar")
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                @Html.Partial("_Topbar")
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            @Html.Partial("_Footer")
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px;" role="document">
+            <div class="modal-content">
+                <div class="card-header py-3modal-header">
+                    <h6 class="modal-title m-0 font-weight-bold text-primary" id="exampleModalLabel">Apropos de <strong>HMS Pro</strong></h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Le <strong>HMS Pro</strong> est un système d'Information Hospitalier qui couvre l'ensemble des informations utilisées dans un établissement de santé en République Démocratique du Congo. Ses Foctionnalités varient selon les services opérationels dans un établissement hospitalier. La performance d’un système d’information dépend de multiples facteurs. Un de ceux-ci est le facteur humain. Celui-ci va percevoir plus ou moins les enjeux d’une mise en commun d’informations vers un même objectif : une réponse adaptée, sécurisée à la demande de soins de la population dans un contexte économique tournée dorénavant vers l’efficience.
+
+                        Le <strong>HMS Pro</strong> doit être conçu pour faciliter l’intégration en temps réel des informations entre l’opérationnel et le décisionnel. Le <strong>HMS Pro</strong> peut regrouper plusieurs fonctions nécessaires à la gestion des plannings, à la gestion de la paye, la facturation, le suivi budgétaire, le relevé d’activités médicales, la communication (internet, intranet, protocoles, messagerie, forum, bon de commande, etc.). La tendance actuelle se tourne vers l’extérieur de l’hôpital :
+                        le développement de réseaux de santé, le Dossier médical personnel, la télémédecine et pourquoi pas le pilotage chirurgical d’un robot à distance.
+
+                        L’objectif du <strong>HMS Pro</strong> est de permettre le suivi du déploiement ou l’état d’avancement d’une politique et d’en évaluer la pertinence dans le cadre d'une démarche qualité. La production de tableaux de bord permet de regrouper et synthétiser les indicateurs pour les présenter de façon exploitable par l’encadrement et faciliter la prise de décision.
+
+                        La mise en place d’un <strong>HMS Pro</strong> performant demande une véritable politique d’information hospitalière menée par une direction du système d’information et de l’organisation depuis la circulaire de 1982 (DSIO). Elle doit être à long terme évolutive et réaliste, car en informatique la mutation est permanente, il faut concilier opportunisme et vision à long terme. Les solutions techniques sont une chose mais le plus important est de mettre en place un réel management.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ActeInfiemiers Modal-->
+    <div class="modal fade" id="detailModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important; height:950px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Apercu avant impression</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="DetailssModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ActeInfiemiers Modal-->
+    <div class="modal fade" id="createActeInfiemiers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche d'Acte Infimier</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createActeInfiemiersModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ActeMedicals Modal-->
+    <div class="modal fade" id="createActeMedicals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche de l'Acte Médical</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createActeMedicalsModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ActeMedicals Modal-->
+    <div class="modal fade"  id="createDemandeurs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Médecin Demandeur</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createDemandeursModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CentreSantes Modal-->
+    <div class="modal fade" id="createCentreSantes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche de Centre de Santé</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createCentreSantesModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compterendus Modal-->
+    <div class="modal fade" id="createCompterendus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche du Compte Rendu</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createCompterendusModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consultations Modal-->
+    <div class="modal fade" id="createConsultations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche de la Consultation</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createConsultationsModal"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Dépenses Modal-->
+    <div class="modal fade" id="createDépenses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Exécution d'une Dépense</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createDepensesModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Division Provinciale de Santé Modal-->
+    <div class="modal fade" id="createDivisionProvincialSantes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Division Provinciale de Santé</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createDivisionProvincialSantesModal"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Examen Modal-->
+    <div class="modal fade" id="createExamens" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'un Examen</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createExamensModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facturations Modal-->
+    <div class="modal fade" id="createFacturations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:999px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Facturation</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createFacturationsModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hopitals Modal-->
+    <div class="modal fade" id="createHopitals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'un Hopital</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createHopitalsModal"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Hospitalisations Modal-->
+    <div class="modal fade" id="createHospitalisations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche d'Hospitalisation</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createHospitalisationsModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maladies Modal-->
+    <div class="modal fade" id="createHospitalisations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'une Maladie</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createInfirmiersModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patients Modal-->
+    <div class="modal fade" id="createPatients" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Fiche d'Identification Patient</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createPatientsModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pavillons Modal-->
+    <div class="modal fade" id="createPavillons" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'une Pavillon</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createPavillonsModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Provinces Modal-->
+    <div class="modal fade" id="createPavillons" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Province</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createProvincesModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rendezvous Modal-->
+    <div class="modal fade" id="createRendezvous" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Ajout d'un Rendez-vous</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createRendezvousModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Serves Modal-->
+    <div class="modal fade" id="createServes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Ajout d'un Service</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createServesModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Territoires Modal-->
+    <div class="modal fade" id="createTerritoires" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'un Territoire</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createTerritoiresModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Villes Modal-->
+    <div class="modal fade" id="createVilles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'une Ville</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createVillesModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZoneSantes Modal-->
+    <div class="modal fade" id="createZoneSantes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:900px !important" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Identification d'une Zone de Santé</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="createZoneSantesModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/chart-area-demo.js"></script>
+    <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+
+
+    <script type="text/javascript">
+
+        function CreateActeInfiemiers() {
+            var url = "ActeInfiemiers/Create";
+            $.get(url, function (result) {
+                $("#createActeInfiemiersModal").html(result);
+            });
+        }
+        function CreateActeMedicals() {
+            var url = "ActeMedicals/Create";
+            $.get(url, function (result) {
+                $("#createActeMedicalsModal").html(result);
+            });
+        }
+
+        function CreateCentreSantes() {
+            var url = "CentreSantes/Create";
+            $.get(url, function (result) {
+                $("#createCentreSantesModal").html(result);
+            });
+        }
+        function CreateConsultations() {
+            var url = "Consultations/Create";
+            $.get(url, function (result) {
+                $("#createConsultationsModal").html(result);
+            });
+        }
+        function CreateCompterendus() {
+            var url = "Compterendus/Create";
+            $.get(url, function (result) {
+                $("#createCompterendusModal").html(result);
+            });
+        }
+        function CreateDemandeurs() {
+            var url = "Demandeurs/Create";
+            $.get(url, function (result) {
+                $("#createDemandeursModal").html(result);
+            });
+        }
+        function CreateDepenses() {
+            var url = "Depenses/Create";
+            $.get(url, function (result) {
+                $("#createDepenseModal").html(result);
+            });
+        }
+
+        function CreateDivisionProvincialSantes() {
+            var url = "DivisionProvincialSantes/Create";
+            $.get(url, function (result) {
+                $("#createDivisionProvincialSantesModal").html(result);
+            });
+        }
+
+        function CreateExamen() {
+            var url = "Examen/Create";
+            $.get(url, function (result) {
+                $("#createExamensModal").html(result);
+            });
+        }
+
+        function CreateFacturations() {
+            var url = "Facturations/Create";
+            $.get(url, function (result) {
+                $("#createFacturationsModal").html(result);
+            });
+        }
+
+        function CreateHopitals() {
+            var url = "Hopitals/Create";
+            $.get(url, function (result) {
+                $("#createHopitalsModal").html(result);
+            });
+        }
+
+        function CreateHospitalisations() {
+            var url = "Hospitalisations/Create";
+            $.get(url, function (result) {
+                $("#createHospitalisationsModal").html(result);
+            });
+        }
+
+        function CreateInfirmiers() {
+            var url = "Infirmiers/Create";
+            $.get(url, function (result) {
+                $("#createInfirmiersModal").html(result);
+            });
+        }
+
+        function CreateMaladies() {
+            var url = "Maladies/Create";
+            $.get(url, function (result) {
+                $("#createMaladiesModal").html(result);
+            });
+        }
+
+        function CreateMedecins() {
+            var url = "Medecins/Create";
+            $.get(url, function (result) {
+                $("#createMedecinsModal").html(result);
+            });
+        }
+
+        function CreatePatients() {
+            var url = "Patients/Create";
+            $.get(url, function (result) {
+                $("#createPatientsModal").html(result);
+            });
+        }
+
+        function CreatePavillons() {
+            var url = "Pavillons/Create";
+            $.get(url, function (result) {
+                $("#createPavillonsModal").html(result);
+            });
+        }
+
+        function CreateProvinces() {
+            var url = "Provinces/Create";
+            $.get(url, function (result) {
+                $("#createProvincesModal").html(result);
+            });
+        }
+
+        function CreateRendezvous() {
+            var url = "Rendezvous/Create";
+            $.get(url, function (result) {
+                $("#createRendezvousModal").html(result);
+            });
+        }
+
+        function CreateServes() {
+            var url = "Serves/Create";
+            $.get(url, function (result) {
+                $("#createServesModal").html(result);
+            });
+        }
+
+        function CreateTerritoires() {
+            var url = "Territoires/Create";
+            $.get(url, function (result) {
+                $("#createTerritoiresModal").html(result);
+            });
+        }
+
+        function CreateVilles() {
+            var url = "Villes/Create";
+            $.get(url, function (result) {
+                $("#createVillesModal").html(result);
+            });
+        }
+
+        function CreateZoneSantes() {
+            var url = "ZoneSantes/Create";
+            $.get(url, function (result) {
+                $("#createZoneSantesModal").html(result);
+            });
+        }
+
+        function ApercuFacture() {
+            var url = "Facturations/Details";
+            $.get(url, function (result) {
+                $("#DetailssModal").html(result);
+            });
+        }
+
+     $(document).ready(function () {
+        $('.ui-datepicker').each(function (i, v) {
+
+            $(".ui-datepicker").val(" ");
+            //$(v).val($.datepicker.formatDate('dd-M-yy', new Date($(v).val())))
+            $(v).datepicker({
+                dateFormat: 'dd-M-yy',
+                changeYear: true,
+                yearRange: '1950:2050',
+                buttonImage: '@Url.Content("~/Content/img/calendar.gif")',
+                buttonImageOnly: true,
+                showOn: "button"
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>

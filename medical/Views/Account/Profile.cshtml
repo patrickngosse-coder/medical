@@ -1,0 +1,34 @@
+﻿@model medical.Model.Models.Personnel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow ">
+    <div class="card-header">
+        <h6 class="m-0 font-weight-bold text-success"> Profile</h6>'
+
+    </div>
+    <div class="card-body">
+
+        <table>
+            <tr>
+
+                <td style="text-align:right">
+                    <img src="~/Content/facebook-avatar.png" height="100" width="100" />
+                </td>
+                <td>
+                    <h4><strong>@Html.DisplayFor(model => model.NomComplet)</strong></h4>
+                    <br />
+                    <text>Sexe :</text> @Html.DisplayFor(model => model.SEXE)
+                    <br />
+                    <text>Email :</text>@Html.DisplayFor(model => model.Email)<text> ans</text>
+                    <br />
+                    <text>Adresse :</text>@Html.DisplayFor(model => model.ADRESSSE)
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<medical.Model.ViewModel.EtatDemandeur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <div class="card-body">
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-info">Aucune Donnée</div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Noms
+                            </th>
+                            <th>
+                                Solde en CDF
+                            </th>
+                            <th>
+                                Solde USD
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@Html.DisplayFor(modelItem => item.DemandeurS)</strong>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaiementSomme)
+                                </td>
+                                <td>
+                                    @(item.PaiementSomme / 2000) $
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><h6 style="color:red;"><strong>Total Général</strong> </h6></td>
+                            <td><h6 style="color:red;">@Model.Sum(i => i.PaiementSomme) </h6></td>
+                            <td><h6 style="color:red;">@Model.Sum(i => i.PaiementSomme / 2000) </h6></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+

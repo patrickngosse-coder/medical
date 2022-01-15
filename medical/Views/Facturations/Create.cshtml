@@ -1,0 +1,249 @@
+﻿@model medical.Model.Models.Facturation
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <P style="color:darkblue;"><strong>Formulaire Facturations</strong> </P>
+
+    <div class="row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-lg-6 mb-4">
+            <div class="form-group row">
+                <text class="control-label col-md-4">Nom Patient</text>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.NOMPATIENT, new { htmlAttributes = new { @class = "form-control", id = "Patient", style = "width:200px;" } })
+                    @Html.ValidationMessageFor(model => model.NOMPATIENT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <text class="control-label col-md-4">Age Patient</text>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.AGE, new { htmlAttributes = new { @class = "form-control", id = "Age" } })
+                    @Html.ValidationMessageFor(model => model.AGE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <text class="control-label col-md-4">Sexe Patient</text>
+                <div class="col-md-8">
+                    @Html.EnumDropDownListFor(model => model.SEXE, "Choisir Genre..", htmlAttributes: new { @class = "form-control form-control-user" })
+                    @Html.ValidationMessageFor(model => model.SEXE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <text class="control-label col-md-4">Catégorie</text>
+                <div class="col-md-8">
+                    @Html.EnumDropDownListFor(model => model.CATEGORIE, "Choisir Catégorie..", htmlAttributes: new { @class = "form-control form-control-user", id = "Categorie" })
+                    @Html.ValidationMessageFor(model => model.CATEGORIE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <text class="control-label col-md-4">Jour</text>
+                <div class="col-md-8">
+                    @Html.EnumDropDownListFor(model => model.JOUR, "Choisir Jour..", htmlAttributes: new { @class = "form-control form-control-user", id = "Jour" })
+                    @Html.ValidationMessageFor(model => model.JOUR, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="form-group row">
+                <text class="control-label col-md-4">Examen</text>
+                <div class="col-md-8">
+                    @Html.DropDownList("IDEXAMEN", null, htmlAttributes: new { @class = "form-control", id = "Examen" })
+                    @Html.ValidationMessageFor(model => model.IDEXAMEN, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <text class="control-label col-md-4">Médecin Examinateur</text>
+                <div class="col-md-8">
+                    @Html.DropDownList("Id", null, htmlAttributes: new { @class = "form-control", id = "Examinateur" })
+                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <text class="control-label col-md-4">Médecin Démandeur</text>
+                <div class="col-md-8">
+                    @Html.DropDownList("IDDEMANDEUR", null, htmlAttributes: new { @class = "form-control", id = "Demandeur" })
+                    @Html.ValidationMessageFor(model => model.IDDEMANDEUR, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <a href="#" onclick="CreateDemandeurs()" data-toggle="modal" data-target="#createDemandeurs" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-user fa-sm text-white-50"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a id="ajoutList" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter à la Liste
+        </a>
+
+    </div>
+    <P style="color:darkblue;"><strong>Détails Facturations</strong> </P>
+    <div id="orderItems">
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+        <input class="btn btn-primary" type="submit" value="Enregistrer" />
+    </div>
+}
+@section scripts{
+    <script>
+
+        //Add button click function
+        $("#ajoutList").click(function (e))
+        {
+            e.preventDefault();
+            var Patient = $('#Patient').val(),
+                Age = $('#Age').val(),
+                Categorie = $("#Categorie").val(),
+                Jour = $("#Jour").val(),
+                Examen = $('#Examen').val(),
+                Examinateur = $('#Examinateur').val(),
+                Demandeur = $('#Demandeur').val(),
+                TotalAmount = parseInt($('#Quantite').val()) * parseFloat($('#Montant').val());
+
+            var $table = $('<table/>');
+            $table.append('<thead><tr><th>Nom Patient</th><th>Examen</th><th>Examinateur</th><th>Demandeur</th><th>Quantity</th><th>Montant</th><th>Total</th><th></th></tr></thead>');
+            var $tbody = $('<tbody/>');
+            $.each(orderItems, function (i, val) {
+                var $row = $('<tr/>');
+                $row.append($('<td/>').html(val.Patient));
+                $row.append($('<td/>').html(val.Examen));
+                $row.append($('<td/>').html(val.Examinateur));
+                $row.append($('<td/>').html(val.Demandeur));
+                $row.append($('<td/>').html(val.Quantite));
+                $row.append($('<td/>').html(val.Montant));
+                $row.append($('<td/>').html(val.TotalAmount));
+                var $remove = $('<a href="#">Remove</a>');
+                $remove.click(function (e) {
+                    e.preventDefault();
+                    orderItems.splice(i, 1);
+                    GeneratedItemsTable();
+                });
+                $row.append($('<td/>').html($remove));
+                $tbody.append($row);
+            });
+
+            console.log("current", orderItems);
+            $table.append($tbody);
+            $('#orderItems').html($table);
+
+
+        }
+
+        //Save button click function
+        //$('#submit').click(function () {
+        //    //validation of order
+        //    var isAllValid = true;
+        //    if (orderItems.length == 0) {
+        //        $('#orderItems').html('<span style="color:red;">Please add order items</span>');
+        //        isAllValid = false;
+        //    }
+
+        //    if ($('#orderNo').val().trim() == '') {
+        //        $('#orderNo').siblings('span.error').css('visibility', 'visible');
+        //        isAllValid = false;
+        //    }
+        //    else {
+        //        $('#orderNo').siblings('span.error').css('visibility', 'hidden');
+        //    }
+
+        //    if ($('#orderDate').val().trim() == '') {
+        //        $('#orderDate').siblings('span.error').css('visibility', 'visible');
+        //        isAllValid = false;
+        //    }
+        //    else {
+        //        $('#orderDate').siblings('span.error').css('visibility', 'hidden');
+        //    }
+
+        //    //Save if valid
+        //    if (isAllValid) {
+        //        var data = {
+        //            OrderNo: $('#orderNo').val().trim(),
+        //            OrderDate: $('#orderDate').val().trim(),
+        //            //Sorry forgot to add Description Field
+        //            Description: $('#description').val().trim(),
+        //            OrderDetails: orderItems
+        //        }
+
+        //        $(this).val('Please wait...');
+
+        //        $.ajax({
+        //            url: '/Home/SaveOrder',
+        //            type: "POST",
+        //            data: JSON.stringify(data),
+        //            dataType: "JSON",
+        //            contentType: "application/json",
+        //            success: function (d) {
+        //                //check is successfully save to database
+        //                if (d.status == true) {
+        //                    //will send status from server side
+        //                    alert('Successfully done.');
+        //                    //clear form
+        //                    orderItems = [];
+        //                    $('#orderNo').val('');
+        //                    $('#orderDate').val('');
+        //                    $('#orderItems').empty();
+        //                }
+        //                else {
+        //                    alert('Failed');
+        //                }
+        //                $('#submit').val('Save');
+        //            },
+        //            error: function () {
+        //                alert('Error. Please try again.');
+        //                $('#submit').val('Save');
+        //            }
+        //        });
+        //    }
+
+        //});
+
+
+    </script>
+}
+@*<style type="text/css">
+        /*Adding some css for looks good*/
+        span.error {
+            display: block;
+            visibility: hidden;
+            color: red;
+            font-size: 90%;
+        }
+
+
+        /*css for table*/
+        .container td {
+            vertical-align: top;
+        }
+
+        .tablecontainer table {
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 1px solid #BFAEAE;
+            border-right: 1px solid #BFAEAE;
+        }
+
+        .tablecontainer th {
+            border-bottom: 2px solid #BFAEAE !important;
+        }
+
+        .tablecontainer th, .tablecontainer td {
+            text-align: left;
+            border-left: 1px solid #BFAEAE;
+            padding: 5px;
+            border-bottom: 1px solid #BFAEAE;
+        }
+
+        .ui-widget {
+            font-size: 12px !important;
+        }
+    </style>*@

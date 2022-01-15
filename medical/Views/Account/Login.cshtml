@@ -1,0 +1,78 @@
+﻿@using medical.Model.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<h1 style="color:transparent">@ViewBag.Title.</h1>
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Bienvenue sur HMS!</h1>
+                            </div>
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <form class="user">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Email, new
+                                        {
+                                            @class = "form-control form-control-user",
+                                            type = "Email",
+                                            id = "exampleInputEmail",
+                                               placeholder = "Entrer Adresse Email..."
+                                        })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(m => m.Password, new
+                                       {
+                                           @class = "form-control form-control-user",
+                                           type = "password",
+                                            id = "exampleInputPassword",
+                                           placeholder = "Mot de passe..."
+                                       })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+
+
+                                            <label class="custom-control-label" for="customCheck">
+                                                @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input", type = "checkbox", id = "customCheck" })
+                                                @Html.LabelFor(m => m.RememberMe)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Se connecter" class="btn btn-primary btn-user btn-block" />
+                                   
+                                </form>
+                            }
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="@Url.Action("ForgotPassword", "Account")">Mot de Passe oublié?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="@Url.Action("Register","Account")">Créer un Compte!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

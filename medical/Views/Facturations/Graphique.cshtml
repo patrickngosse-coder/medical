@@ -1,0 +1,12 @@
+﻿@model IEnumerable<medical.Model.ViewModel.EtatPrincipal>
+
+@{
+    var myChart1 = new Chart(width: 600, height: 400, theme: ChartTheme.Blue)
+    .AddLegend("Patient par Jour:")
+        .AddTitle("Paiement par Jour")
+        .AddSeries("Default", chartType: "Pie",
+        xValue: Model, xField: "CompteS",
+            yValues: Model, yFields: "PaiementSomme")
+        .Write();
+}
+

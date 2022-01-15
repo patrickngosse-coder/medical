@@ -1,0 +1,132 @@
+﻿@model IEnumerable<medical.Model.Models.Medecin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Page Heading -->
+    <div class="card-header py-3">
+        @*<a href="@Url.Action("Create","Medecins")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>*@
+       
+        @*<a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>*@
+    </div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste Medecins</h6>
+        <br />
+        @Html.ActionLink("Excel ", "Reports", new { ReportType = "Excel" })|
+        @Html.ActionLink(" Word ", "Reports", new { ReportType = "Word" })|
+        @Html.ActionLink(" PDF ", "Reports", new { ReportType = "PDF" })|
+        @Html.ActionLink(" Image", "Reports", new { ReportType = "Image" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                       
+                        <th>
+                            @Html.DisplayNameFor(model => model.NOM)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.POSTNOM)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PRENOM)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SEXE)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.LIEUNAISSANCE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DATENAISSANCE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ETATCIVIL)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MATRICULE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GRADE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ADRESSSE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Service.DESIGNATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IDHOPITAL)
+                        </th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            <img src="~/Content/facebook-avatar.png" height="45" width="45" />
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NOM)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.POSTNOM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PRENOM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SEXE)
+                        </td>
+                        @*<td>
+            @Html.DisplayFor(modelItem => item.LIEUNAISSANCE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATENAISSANCE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ETATCIVIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MATRICULE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GRADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADRESSSE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service.DESIGNATION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDHOPITAL)
+        </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

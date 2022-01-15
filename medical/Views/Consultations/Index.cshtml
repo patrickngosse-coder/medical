@@ -1,0 +1,110 @@
+﻿@model IEnumerable<medical.Model.Models.Consultation>
+
+
+@{
+    ViewBag.Title = "Liste Actes Médicaux";
+}
+
+
+<!-- Page Heading -->
+<div class="card-header py-3">
+   
+    <a href="#"  onclick="CreateConsultations()" data-toggle="modal" data-target="#createConsultations" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+    </a>
+   
+    <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+        <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+    </a>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Consultations</h6>
+        <br />
+        @using (Html.BeginForm("ExportData", "Consultations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" type="submit"> <i class="fas fa-file-excel fa-sm text-white-50"></i> Exporter Excel</button>
+        }
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DATECONSULTATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DECISION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PLAINTE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DIAGNOSTIC)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TEMPERATURE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PRESSIONARTERIEL)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.POIDS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PATIENTID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DATECONSULTATION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DECISION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PLAINTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DIAGNOSTIC)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TEMPERATURE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRESSIONARTERIEL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.POIDS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PATIENTID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IDCONSULTATION }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IDCONSULTATION }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IDCONSULTATION })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

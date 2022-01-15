@@ -1,0 +1,50 @@
+﻿@model medical.Model.Models.Rendezvous
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rendezvous</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPATIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPATIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPERSONNEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPERSONNEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATERENDEZVOUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATERENDEZVOUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOTE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDRDV }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

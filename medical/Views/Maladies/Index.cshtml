@@ -1,0 +1,102 @@
+﻿@model IEnumerable<medical.Model.Models.Maladie>
+
+@{
+    ViewBag.Title = "Liste Actes Médicaux";
+}
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Maladies</h6>
+        <br />
+        <a href="#" onclick="CreateActeMedicals()" data-toggle="modal" data-target="#ActeInfiemier" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+            <i class="fas fa-file-excel fa-sm text-white-50"></i> Exporter Excel
+        </a>
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CentreSante.DESIGNATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Hopital.COORDONNE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IDPATIENT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SYMPTOME)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DESIGNATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OBSERVATION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Jour)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mois)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Annee)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CentreSante.DESIGNATION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hopital.COORDONNE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IDPATIENT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SYMPTOME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESIGNATION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OBSERVATION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Jour)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mois)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Annee)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IDMALADIE }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.IDMALADIE }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IDMALADIE })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

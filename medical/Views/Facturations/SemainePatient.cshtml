@@ -1,0 +1,14 @@
+﻿@model IEnumerable<medical.Model.ViewModel.PatientSemaine>
+
+@{
+    var myChart1 = new Chart(width: 800, height: 600, theme: ChartTheme.Green)
+    .AddLegend("Patient par Jour:")
+        .AddTitle("Patient par Jour")
+        .AddSeries("Default", chartType: "Pie",
+        xValue: Model, xField: "JourS",
+            yValues: Model, yFields: "NbrePatient")
+        .Write();
+}
+
+
+

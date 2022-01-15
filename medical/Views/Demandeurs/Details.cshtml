@@ -1,0 +1,50 @@
+﻿@model medical.Model.Models.Demandeur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Demandeur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POSTNOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POSTNOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRENOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRENOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEXE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDDEMANDEUR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

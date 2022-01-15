@@ -1,0 +1,34 @@
+﻿@model medical.Model.Models.Territoire
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Territoire</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESIGNATION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDTERRITOIRE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<medical.Model.Models.Rendezvous>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-primary text-white shadow">
+                <div class="card-body">
+                    Médecin
+                    <div class="text-white-50 small">@Model.Select(i=>i.Medecin.NomComplet).Count()</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-success text-white shadow">
+                <div class="card-body">
+                    Patient
+                    <div class="text-white-50 small">@Model.Select(i => i.Patient.NomComplet).Count()</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-info text-white shadow">
+                <div class="card-body">
+                    Date
+                    <div class="text-white-50 small">@Model.Select(i => i.DATERENDEZVOUS).Count()</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-warning text-white shadow">
+                <div class="card-body">
+                    RDV
+                    <div class="text-white-50 small">@Model.Select(i => i.IDRDV).Count()</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste Rendezvous</h6>
+        <br />
+        <a href="#" onclick="CreateRendezvous()" data-toggle="modal" data-target="#createRendezvous" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+      
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            <text>Patient</text>
+                        </th>
+                        <th>
+                            <text>Médecin</text>
+                        </th>
+                        <th>
+                           <text>Date RDV</text>
+                        </th>
+                        <th>
+                           <text>Observation</text>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IDPATIENT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IDPERSONNEL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DATERENDEZVOUS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NOTE)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IDRDV }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IDRDV }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IDRDV })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

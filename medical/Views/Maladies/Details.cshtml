@@ -1,0 +1,90 @@
+﻿@model medical.Model.Models.Maladie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Maladie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CentreSante.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CentreSante.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hopital.COORDONNE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hopital.COORDONNE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPATIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPATIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SYMPTOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SYMPTOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OBSERVATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OBSERVATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mois)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mois)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Annee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Annee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDMALADIE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

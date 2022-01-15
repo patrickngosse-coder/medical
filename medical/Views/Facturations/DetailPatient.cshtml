@@ -1,0 +1,149 @@
+﻿@model medical.Model.ViewModel.IndexPatient
+
+@{
+    ViewBag.Title = "DetailPatient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card shadow mb-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste des Services</h6>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Examen(s) associé(s)
+                </th>
+                <th>
+                   Désignation Service
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model.Services)
+            {
+                string selectedRow = "";
+                if (item.IDSERVICE == ViewBag.IDSERVICE)
+                {
+                    selectedRow = "bg-gray-200";
+                }
+
+
+                <tr class="@selectedRow" valign="top">
+                    <td>
+                        @Html.ActionLink("Voir", "DetailPatient", new { id = item.IDSERVICE, @class = "d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" })
+                    </td>
+
+                    <td>
+                        <h6> @Html.DisplayFor(modelItem => item.DESIGNATION)</h6>
+
+                    </td>
+                </tr>
+
+            }
+        </table>
+
+    </div>
+</div>
+<div class="card shadow mb-12">
+
+    @if (Model.Examens != null)
+    {
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Il y a @Model.Examens.Count() examen(s)</h6>
+        </div>
+        <div class="card-body">
+
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Patient(s) Examiné(s)
+                    </th>
+
+                    <th>
+                        Désignation Examen et Prix
+                    </th>
+
+                </tr>
+
+                @foreach (var item in Model.Examens)
+                {
+                    string selectedRow = "";
+                    if (item.IDEXAMEN == ViewBag.IDEXAMEN)
+                    {
+                        selectedRow = "bg-gray-300";
+                    }
+                    <tr class="@selectedRow" valign="top">
+                        <td>
+                            @Html.ActionLink("Voir", "DetailPatient", new { id2 = item.IDEXAMEN }) 
+                        </td>
+
+                        <td>
+                            <h6>@Html.DisplayFor(modelItem => item.Souche) FC</h6>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+
+
+
+
+        </div>
+
+    }
+</div>
+
+<div class="card shadow mb-12">
+    @if (Model.Facturations != null)
+    {
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Il y a @Model.Facturations.Select(i => i.NOMPATIENT).Distinct().Count() Patient(s) qui a (ont) passé(s) cet examen</h6>
+        </div>
+        <div class="card-body">
+
+            <div>
+
+                <div>
+                    <hr />
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th>
+                                Photo
+                            </th>
+                            <th>
+                                Détails Patients
+                            </th>
+
+                        </tr>
+
+                        @foreach (var item in Model.Facturations)
+                        {
+                            <tr>
+                                <td style="text-align:right">
+                                    <img src="~/Content/facebook-avatar.png" height="80" width="80" />
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.NOMPATIENT/*.LimitLength(30)*/, "Index", new { id = item.IDFACTURATION }, new { @title = item.NOMPATIENT })
+                                    <br />
+                                    <text>Sexe :</text> @Html.DisplayFor(modelItem => item.SEXE)
+                                    <br />
+                                    <text>Age :</text>@Html.DisplayFor(modelItem => item.AGE)<text> ans</text>
+                                    <br />
+                                    <text>Catégorie :</text>@Html.DisplayFor(modelItem => item.CATEGORIE)
+
+                                </td>
+                            </tr>
+                        }
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

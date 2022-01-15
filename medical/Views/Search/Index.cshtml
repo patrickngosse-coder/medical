@@ -1,0 +1,347 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <div>
+        <h4>Resultats...</h4>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Infirmier</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchActeInfirmier", "ActeInfiemiers"); }
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Médical</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchActeMedical", "ActeMedicals"); }
+                    </div>
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Agent</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchAgent", "Agents"); }
+                    </div>
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Service</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchSerice", "Serves"); }
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Examen</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchExamen", "Examen"); }
+                    </div>
+
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Infirmier</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchInfirmier", "Infirmiers"); }
+                    </div>
+
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Médecin</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchMedecin", "Medecins"); }
+                    </div>
+
+                </div>
+                @*<div class="card shadow mb-5">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Patient</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchPatient", "Patients"); }
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+
+
+    </div>
+}
+@if (User.IsInRole("Medecin"))
+{
+    <div>
+        <h4>Resultats...</h4>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Infirmier</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchActeInfirmier", "ActeInfiemiers"); }
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Médical</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchActeMedical", "ActeMedicals"); }
+                    </div>
+                </div>
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Agent</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchAgent", "Agents"); }
+                        </div>
+                    </div>*@
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Infirmier</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchInfirmier", "Infirmiers"); }
+                        </div>
+
+                    </div>*@
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Examen</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchExamen", "Examen"); }
+                    </div>
+
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Service</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchSerice", "Serves"); }
+                    </div>
+
+                </div>
+
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Médecin</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchMedecin", "Medecins"); }
+                        </div>
+
+                    </div>*@
+                @*<div class="card shadow mb-5">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Patient</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchPatient", "Patients"); }
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+
+
+    </div>
+}
+@if (User.IsInRole("Secretaire"))
+{
+    <div>
+        <h4>Resultats...</h4>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Infirmier</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchActeInfirmier", "ActeInfiemiers"); }
+                        </div>
+                    </div>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Médical</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchActeMedical", "ActeMedicals"); }
+                        </div>
+                    </div>*@
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Agent</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchAgent", "Agents"); }
+                        </div>
+                    </div>*@
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Service</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchSerice", "Serves"); }
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Examen</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchExamen", "Examen"); }
+                    </div>
+
+                </div>
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Infirmier</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchInfirmier", "Infirmiers"); }
+                        </div>
+
+                    </div>*@
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Médecin</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchMedecin", "Medecins"); }
+                        </div>
+
+                    </div>*@
+                @*<div class="card shadow mb-5">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Patient</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchPatient", "Patients"); }
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+
+
+    </div>
+}
+
+@if (User.IsInRole("Caissier"))
+{
+    <div>
+        <h4>Resultats...</h4>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Infirmier</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchActeInfirmier", "ActeInfiemiers"); }
+                        </div>
+                    </div>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Acte Médical</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchActeMedical", "ActeMedicals"); }
+                        </div>
+                    </div>*@
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Agent</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchAgent", "Agents"); }
+                        </div>
+                    </div>*@
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Service</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchSerice", "Serves"); }
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Recherche dans Examen</h6>
+                    </div>
+                    <div class="card-body">
+                        @{ Html.RenderAction("SearchExamen", "Examen"); }
+                    </div>
+
+                </div>
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Infirmier</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchInfirmier", "Infirmiers"); }
+                        </div>
+
+                    </div>*@
+                @*<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Médecin</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchMedecin", "Medecins"); }
+                        </div>
+
+                    </div>*@
+                @*<div class="card shadow mb-5">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Recherche dans Patient</h6>
+                        </div>
+                        <div class="card-body">
+                            @{ Html.RenderAction("SearchPatient", "Patients"); }
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+
+
+    </div>
+}
+
+
+

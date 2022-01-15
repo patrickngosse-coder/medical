@@ -1,0 +1,57 @@
+﻿@model IEnumerable<medical.Model.ViewModel.DepenseJournalier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <div class="card-body">
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-info">Aucune Donnée</div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Jours
+                            </th>
+                            <th>
+                                Montants en CDF
+                            </th>
+                            <th>
+                                Montants USD
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@Html.DisplayFor(modelItem => item.JourS)</strong>
+                                </td>
+                                <td>
+                                    @item.DepenseSomme FC
+                                </td>
+                                <td>
+                                    @(item.DepenseSomme / 2000) $
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><H6 style="color:red;"><strong>Total Général</strong> </H6></td>
+                            <td><H6 style="color:red;">@Model.Sum(i => i.DepenseSomme) FC</H6></td>
+                            <td><H6 style="color:red;">@Model.Sum(i => i.DepenseSomme / 2000) $</H6></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+

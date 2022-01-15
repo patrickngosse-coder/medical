@@ -1,0 +1,74 @@
+﻿@model medical.Model.Models.Compterendu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Compterendu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ActeInfiemier.ACTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActeInfiemier.ACTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RAPPORT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAPPORT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPATIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPATIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPERSONNEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPERSONNEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDACTMEDICO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDACTMEDICO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXAMENID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXAMENID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATHOLOGIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATHOLOGIE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCMPTERENDU }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

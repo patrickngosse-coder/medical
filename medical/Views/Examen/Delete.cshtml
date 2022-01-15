@@ -1,0 +1,80 @@
+﻿@model medical.Model.Models.Examen
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Examen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Service.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESIGNATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESIGNATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRIXUNITAIRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRIXUNITAIRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POUCENTAGEXAMEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POUCENTAGEXAMEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POUCENTAGEDEMAND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POUCENTAGEDEMAND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATIERE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATIERE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

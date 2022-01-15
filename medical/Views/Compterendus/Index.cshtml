@@ -1,0 +1,91 @@
+﻿@model IEnumerable<medical.Model.Models.Compterendu>
+
+@{
+    ViewBag.Title = "";
+}
+    <div class="card-header py-3">
+
+        <!-- Page Heading -->
+        <a href="#" onclick="CreateCompterendus()" data-toggle="modal" data-target="#createCompterendus" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+      
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>
+    </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Compterendus</h6>
+        <br />
+        @using (Html.BeginForm("ExportData", "Compterendus", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" type="submit"> <i class="fas fa-file-excel fa-sm text-white-50"></i> Exporter Excel</button>
+        }
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ActeInfiemier.ACTE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RAPPORT)
+                        </th>
+                       
+                        <th>
+                            @Html.DisplayNameFor(model => model.ActeMedical.Medecin.NomComplet)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IDACTMEDICO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EXAMENID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PATHOLOGIE)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ActeInfiemier.ACTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RAPPORT)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ActeMedical.Medecin.NomComplet)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IDACTMEDICO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EXAMENID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PATHOLOGIE)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IDCMPTERENDU }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IDCMPTERENDU }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IDCMPTERENDU })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

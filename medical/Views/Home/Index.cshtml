@@ -1,0 +1,650 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h5 class="h3 mb-0 text-gray-800">Bienvenu sur HMS Pro !</h5>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-user fa-sm text-white-50"></i> Compte Admin
+        </a>
+    </div>
+    <h1 class="h3 mb-1 text-gray-800"></h1>
+    <p class="mb-4">
+        Le Système d'Information Hospitalier le plus performant qui couvre l'ensemble des informations utilisées dans un établissement de santé en RDC.
+    </p>
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Médecins Examinateurs
+                            </div>
+                            @{ Html.RenderAction("MedecinIndex", "Medecins"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-nurse fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Médecins Démandeurs
+                            </div>
+                            @{ Html.RenderAction("DemandeurIndex", "Demandeurs"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Services
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    @{ Html.RenderAction("ServiceIndex", "Serves"); }
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-cog fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Acte Médical
+                            </div>
+                            @{ Html.RenderAction("ActeMedicalIndex", "ActeMedicals"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-receipt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Consultation
+                            </div>
+                            @{ Html.RenderAction("ConsultationIndex", "Consultations"); }
+
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-briefcase-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Examen
+                            </div>
+                            @{ Html.RenderAction("ExamenIndex", "Examen"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Balance Caisse
+                            </div>
+                            @{ Html.RenderAction("FacturationIndex", "Facturations"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-cash-register fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Depenses(Global)
+                            </div>
+                            @{ Html.RenderAction("DepenseIndex", "Depenses");}
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-pump-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Content Row -->
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Apropos HMS Pro</h6>
+            </div>
+            <div class="card-body">
+                <p>
+                    Le Système d'Information Hospitalier couvre l'ensemble des informations utilisées dans un établissement de santé. La performance d’un système d’information dépend de multiples facteurs.
+                   
+                </p>
+                <p class="mb-0">
+                    Un de ceux-ci est le facteur humain. Celui-ci va percevoir plus ou moins les enjeux d’une mise en commun d’informations vers un même objectif : une réponse adaptée, sécurisée à la demande de soins de la population.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+       
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Adaptation à tout les écrans</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                         src="~/Content/img/undraw_posting_photo.svg" alt="">
+                </div>
+               
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">
+                    Browse Illustrations on
+                    unDraw &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+@if (Request.IsAuthenticated && User.IsInRole("Medecin"))
+{
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h5 class="h3 mb-0 text-gray-800">Bienvenu sur HMS Pro !</h5>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+            <i class="fas fa-user fa-sm text-white-50"></i> Compte Médecin
+        </a>
+    </div>
+    <p class="mb-4">
+        Le Système d'Information Hospitalier le plus performant, qui couvre l'ensemble des informations utilisées dans un établissement de santé en RDC.
+    </p>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Mes Honoraires(Global)
+                            </div>
+                            @{ Html.RenderAction("MyHonoraires", "Facturations");}
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-money-bill fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Mes Patients
+                            </div>
+                            @{ Html.RenderAction("Patients", "Facturations"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Mes Examens
+                            </div>
+                            @{ Html.RenderAction("MyExamens", "Examen"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Mes Services
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    @{ Html.RenderAction("MyServices", "Serves"); }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-cog fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!-- Content Row -->
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Apropos HMS Pro</h6>
+            </div>
+            <div class="card-body">
+                <p>
+                    Le Système d'Information Hospitalier couvre l'ensemble des informations utilisées dans un établissement de santé. La performance d’un système d’information dépend de multiples facteurs.
+
+                </p>
+                <p class="mb-0">
+                    Un de ceux-ci est le facteur humain. Celui-ci va percevoir plus ou moins les enjeux d’une mise en commun d’informations vers un même objectif : une réponse adaptée, sécurisée à la demande de soins de la population.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Adaptation à tout les écrans</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                         src="~/Content/img/undraw_posting_photo.svg" alt="">
+                </div>
+
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">
+                    Browse Illustrations on
+                    unDraw &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+@if (Request.IsAuthenticated && User.IsInRole("Secretaire"))
+{
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h5 class="h3 mb-0 text-gray-800">Bienvenu sur HMS Pro !</h5>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm">
+            <i class="fas fa-user fa-sm text-white-50"></i> Compte Secrétaire
+        </a>
+    </div>
+    <p class="mb-4">
+        Le Système d'Information Hospitalier le plus performant, qui couvre l'ensemble des informations utilisées dans un établissement de santé en RDC.
+    </p>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Consultation
+                            </div>
+                            @{ Html.RenderAction("ConsultationIndex", "Consultations"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-briefcase-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Examen
+                            </div>
+                            @{ Html.RenderAction("ExamenIndex", "Examen"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Médecins Examinateurs
+                            </div>
+                            @{ Html.RenderAction("MedecinIndex", "Medecins"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-nurse fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Médecins Démandeurs
+                            </div>
+                            @{ Html.RenderAction("DemandeurIndex", "Demandeurs"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- Content Row -->
+
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Apropos HMS Pro</h6>
+            </div>
+            <div class="card-body">
+                <p>
+                    Le Système d'Information Hospitalier couvre l'ensemble des informations utilisées dans un établissement de santé. La performance d’un système d’information dépend de multiples facteurs.
+
+                </p>
+                <p class="mb-0">
+                    Un de ceux-ci est le facteur humain. Celui-ci va percevoir plus ou moins les enjeux d’une mise en commun d’informations vers un même objectif : une réponse adaptée, sécurisée à la demande de soins de la population.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Adaptation à tout les écrans</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                         src="~/Content/img/undraw_posting_photo.svg" alt="">
+                </div>
+
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">
+                    Browse Illustrations on
+                    unDraw &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+}
+@if (Request.IsAuthenticated && User.IsInRole("Caissier"))
+{
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h5 class="h3 mb-0 text-gray-800">Bienvenu sur HMS Pro !</h5>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+            <i class="fas fa-user fa-sm text-white-50"></i> Compte Caissier
+        </a>
+    </div>
+    <p class="mb-4">
+        Le Système d'Information Hospitalier le plus performant, qui couvre l'ensemble des informations utilisées dans un établissement de santé en RDC.
+    </p>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Consultation
+                            </div>
+                            @{ Html.RenderAction("ConsultationIndex", "Consultations"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-briefcase-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Examen
+                            </div>
+                            @{ Html.RenderAction("ExamenIndex", "Examen"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-medical fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Médecins Examinateurs
+                            </div>
+                            @{ Html.RenderAction("MedecinIndex", "Medecins"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-nurse fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Médecins Démandeurs
+                            </div>
+                            @{ Html.RenderAction("DemandeurIndex", "Demandeurs"); }
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- Content Row -->
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Apropos HMS Pro</h6>
+            </div>
+            <div class="card-body">
+                <p>
+                    Le Système d'Information Hospitalier couvre l'ensemble des informations utilisées dans un établissement de santé. La performance d’un système d’information dépend de multiples facteurs.
+
+                </p>
+                <p class="mb-0">
+                    Un de ceux-ci est le facteur humain. Celui-ci va percevoir plus ou moins les enjeux d’une mise en commun d’informations vers un même objectif : une réponse adaptée, sécurisée à la demande de soins de la population.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Adaptation à tout les écrans</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                         src="~/Content/img/undraw_posting_photo.svg" alt="">
+                </div>
+
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">
+                    Browse Illustrations on
+                    unDraw &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+}

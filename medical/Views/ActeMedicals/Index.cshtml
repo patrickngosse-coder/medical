@@ -1,0 +1,69 @@
+﻿@model IEnumerable<medical.Model.Models.ActeMedical>
+
+
+@{
+    ViewBag.Title = "Liste Actes Médicaux";
+}
+
+    <div class="card-header py-3">
+        <!-- Page Heading -->
+        <a href="#" onclick="CreateActeMedicals()" data-toggle="modal" data-target="#createActeMedicals" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Ajouter Nouveau
+        </a>
+      
+        <a href="#" onclick="" data-toggle="modal" data-target="#createExamen" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+            <i class="fas fa-print fa-sm text-white-50"></i> Imprimer
+        </a>
+    </div>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Actes Médicaux</h6>
+        <br />
+        <!-- Page Heading -->
+        @Html.ActionLink("Excel ", "Reports", new { ReportType = "Excel" })|
+        @Html.ActionLink(" Word ", "Reports", new { ReportType = "Word" })|
+        @Html.ActionLink(" PDF ", "Reports", new { ReportType = "PDF" })|
+        @Html.ActionLink(" Image", "Reports", new { ReportType = "Image" })
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ACTE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ACTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IDACTEMEDICAUX }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.IDACTEMEDICAUX }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IDACTEMEDICAUX })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
